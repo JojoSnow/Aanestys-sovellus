@@ -1,7 +1,7 @@
 
 ## Käyttötapauskuvaukset
 
-
+---
 - **Nimi:** Selaile äänestyksiä
 - **Käyttäjät:** Käyttäjä
 - **Laukaisija:** Internet-selain sovelluksen osoitteessa.
@@ -9,8 +9,7 @@
 - **Kuvaus:** Käyttäjä näkee ja selaa äänestyksiä etusivulla.
 - **Jälkiehto:**
 - **Poikkeukset:**
-   
-    
+---
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -18,8 +17,7 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-    
-    
+---
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -27,8 +25,7 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-    
-     
+---
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -36,8 +33,7 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-    
-    
+--- 
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -45,8 +41,7 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-    
-    
+---
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
