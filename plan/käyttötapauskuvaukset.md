@@ -1,7 +1,6 @@
 
-## Käyttötapauskuvaukset
+# Käyttötapauskuvaukset
 
----
 - **Nimi:** Selaile äänestyksiä
 - **Käyttäjät:** Käyttäjä
 - **Laukaisija:** Internet-selain sovelluksen osoitteessa.
