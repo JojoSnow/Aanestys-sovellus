@@ -9,8 +9,8 @@
 - **Kuvaus:** Käyttäjä näkee ja selaa äänestyksiä etusivulla.
 - **Jälkiehto:**
 - **Poikkeukset:**
-
-
+   
+    
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -18,8 +18,8 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-
-
+    
+    
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -27,8 +27,8 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-
-
+    
+     
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -36,8 +36,8 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-
-
+    
+    
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
@@ -45,8 +45,8 @@
 - **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
-
-
+    
+    
 - **Nimi:**
 - **Käyttäjät:**
 - **Laukaisija:**
