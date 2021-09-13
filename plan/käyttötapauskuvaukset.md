@@ -4,12 +4,20 @@
 - **Nimi:** Selaile äänestyksiä
 - **Käyttäjät:** Käyttäjä
 - **Laukaisija:** Internet-selain sovelluksen osoitteessa.
-- **Esiehto:**
-- **Kuvaus:** Käyttäjä näkee ja selaa äänestyksiä etusivulla.
+- **Esiehto:** Käyttäjän internet-selain sovelluksen osoitteessa.
+- **Kuvaus:** Käyttäjä näkee ja selaa listattuja äänestyksiä etusivulla.
+- **Jälkiehto:** Käyttäjä klikkaa toiselle sivulle.
+- **Poikkeukset:** Äänestyksiä ei ole: Pyydä käymään sivustolla uudestaan.
+---
+- **Nimi:** Valitse äänestys
+- **Käyttäjät:** Käyttäjä
+- **Laukaisija:** Äänestyksen valitseminen
+- **Esiehto:** 
+- **Kuvaus:**
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
-- **Nimi:**
+- **Nimi:** Äänestä äänestyksessä
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
@@ -17,15 +25,7 @@
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
-- **Nimi:**
-- **Käyttäjät:**
-- **Laukaisija:**
-- **Esiehto:**
-- **Kuvaus:**
-- **Jälkiehto:**
-- **Poikkeukset:**
----
-- **Nimi:**
+- **Nimi:** Katso äänestystilanne
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
@@ -33,7 +33,7 @@
 - **Jälkiehto:**
 - **Poikkeukset:**
 --- 
-- **Nimi:**
+- **Nimi:** Tee äänestyksiä
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
@@ -41,7 +41,7 @@
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
-- **Nimi:**
+- **Nimi:** Poista äänestyksiä
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
