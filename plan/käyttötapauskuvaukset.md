@@ -5,15 +5,15 @@
 - **Käyttäjät:** Käyttäjä
 - **Laukaisija:** Internet-selain sovelluksen osoitteessa.
 - **Esiehto:** Käyttäjän internet-selain sovelluksen osoitteessa.
-- **Kuvaus:** Käyttäjä näkee ja selaa listattuja äänestyksiä etusivulla.
-- **Jälkiehto:** Käyttäjä klikkaa toiselle sivulle.
+- **Käyttötapauksen kulku:** Käyttäjä näkee ja selaa listattuja äänestyksiä etusivulla.
+- **Jälkiehto:** Käyttäjä on selannut äänestyksiä.
 - **Poikkeukset:** Äänestyksiä ei ole: Pyydä käymään sivustolla uudestaan.
 ---
 - **Nimi:** Valitse äänestys
 - **Käyttäjät:** Käyttäjä
 - **Laukaisija:** Äänestyksen valitseminen
 - **Esiehto:** 
-- **Kuvaus:**
+- **Käyttötapauksen kulku:**
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
@@ -21,7 +21,7 @@
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
-- **Kuvaus:**
+- **Käyttötapauksen kulku:**
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
@@ -29,15 +29,31 @@
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
-- **Kuvaus:**
+- **Käyttötapauksen kulku:**
 - **Jälkiehto:**
 - **Poikkeukset:**
 --- 
+- **Nimi:** Rekisteröityminen
+- **Käyttäjät:**
+- **Laukaisija:**
+- **Esiehto:**
+- **Käyttötapauksen kulku:**
+- **Jälkiehto:**
+- **Poikkeukset:**
+---
+- **Nimi:** Kirjautuminen
+- **Käyttäjät:**
+- **Laukaisija:**
+- **Esiehto:**
+- **Käyttötapauksen kulku:**
+- **Jälkiehto:**
+- **Poikkeukset:**
+---
 - **Nimi:** Tee äänestyksiä
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
-- **Kuvaus:**
+- **Käyttötapauksen kulku:**
 - **Jälkiehto:**
 - **Poikkeukset:**
 ---
@@ -45,6 +61,6 @@
 - **Käyttäjät:**
 - **Laukaisija:**
 - **Esiehto:**
-- **Kuvaus:**
+- **Käyttötapauksen kulku:**
 - **Jälkiehto:**
 - **Poikkeukset:**
