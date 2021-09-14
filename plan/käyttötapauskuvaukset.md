@@ -51,16 +51,26 @@
 ---
 ### Tee äänestyksiä
 - *Käyttäjät:* Ylläpitäjä
-- *Laukaisija:* Ylläpitäjä haluaa tehdä äänestyksen
-- *Esiehto:* 
+- *Laukaisija:* Ylläpitäjä haluaa tehdä uuden äänestyksen
+- *Esiehto:* Ylläpitäjä on valinnut 'uusi äänestys'-toiminnon
 - *Käyttötapauksen kulku:*
-- *Jälkiehto:*
+    1. Järjestelmä pyytää äänestyksen tietoja
+    2. Ylläpitäjä antaa äänestyksen nimen
+    3. Ylläpitäjä antaa äänestykselle äänestyksen vaihtoehtoja (väh. 2)
+    4. Järjestelmä tekee uuden äänestyksen
+- *Jälkiehto:* Ylläpitäjä on saanut äänestyksen tehtyä
 - *Poikkeuksellinen toiminta:*
+    1. Ylläpitäjä ei anna äänestyksen nimeä
+    2. Ylläpitäjä ei anna äänestykselle äänestyksen vaihtoehtoja
+    3. Järjestelmä ei tee uutta äänestystä
 ---
 ### Poista äänestyksiä
 - *Käyttäjät:* Ylläpitäjä
 - *Laukaisija:* Ylläpitäjä haluaa poistaa äänestyksen
-- *Esiehto:*
+- *Esiehto:* Ylläpitäjä on valinnut äänestyksen
 - *Käyttötapauksen kulku:*
-- *Jälkiehto:*
+    1. Ylläpitäjä pyytää järjestelmää poistamaan äänestyksen
+    2. Järjestelmä poistaa äänestyksen
+- *Jälkiehto:* Ylläpitäjä on saanut poistettua äänestyksen
 - *Poikkeuksellinen toiminta:*
+    1. Järjestelmä ei poista äänestystä
