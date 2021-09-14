@@ -1,50 +1,66 @@
 
 # Käyttötapauskuvaukset
 
-- **Nimi:** Selaile äänestyksiä
-- **Käyttäjät:** Käyttäjä
-- **Laukaisija:** Internet-selain sovelluksen osoitteessa.
-- **Esiehto:** Käyttäjän internet-selain sovelluksen osoitteessa.
-- **Käyttötapauksen kulku:** Käyttäjä näkee ja selaa listattuja äänestyksiä etusivulla.
-- **Jälkiehto:** Käyttäjä on selannut äänestyksiä.
-- **Poikkeukset:** Äänestyksiä ei ole: Pyydä käymään sivustolla uudestaan.
+### Selaile äänestyksiä
+- *Käyttäjät:* Käyttäjä
+- *Laukaisija:* Käyttäjä haluaa selata äänestyksiä
+- *Esiehto:* Käyttäjä on etusivulla
+- *Käyttötapauksen kulku:* 
+    1. Käyttäjä näkee äänestykset etusivulla
+    2. Käyttäjä selaa listattuja äänestyksiä etusivulla
+- *Jälkiehto:* Käyttäjä voi selata äänestyksiä
+- *Poikkeuksellinen toiminta:* 
+    1. Äänestyksiä ei ole: Pyydä käymään sivustolla uudestaan
 ---
-- **Nimi:** Valitse äänestys
-- **Käyttäjät:** Käyttäjä
-- **Laukaisija:** Äänestyksen valitseminen
-- **Esiehto:** 
-- **Käyttötapauksen kulku:**
-- **Jälkiehto:**
-- **Poikkeukset:**
+### Valitse äänestys
+- *Käyttäjät:* Käyttäjä
+- *Laukaisija:* Käyttäjä haluaa valita äänestyksen
+- *Esiehto:* Käyttäjä klikkaa äänestystä
+- *Käyttötapauksen kulku:* 
+    1. Käyttäjä valitsee äänestyksen
+    2. Järjestelmä näyttää äänestyksen sisällön
+- *Jälkiehto:* Käyttäjä näkee äänestyksen sisällön
+- *Poikkeuksellinen toiminta:* 
+    1. Äänestyksen sisällön näyttäminen ei toimi
 ---
-- **Nimi:** Äänestä äänestyksessä
-- **Käyttäjät:**
-- **Laukaisija:**
-- **Esiehto:**
-- **Käyttötapauksen kulku:**
-- **Jälkiehto:**
-- **Poikkeukset:**
+### Äänestä äänestyksessä
+- *Käyttäjät:* Käyttäjä
+- *Laukaisija:* Käyttäjä haluaa äänestää äänestyksessä
+- *Esiehto:* Käyttäjä on valinnut äänestyksen
+- *Käyttötapauksen kulku:*
+    1. Järjestelmä pyytää sähkö-postiosoitetta
+    2. Käyttäjä antaa sähköposti-osoitteensa
+    3. Käyttäjä äänestää
+    4. Järjestelmä rekisteröi äänestyksen
+    5. Järjestelmä antaa varmistuksen että käyttäjän äänestys on onnistunut
+    6. Käyttäjä palaa äänestämäänsä äänestykseen
+- *Jälkiehto:* Käyttäjä on äänestänyt äänestyksessä
+- *Poikkeuksellinen toiminta:*
+    1. Käyttäjä ei anna sähköposti-osoitettaan
+    2. Käyttäjän äänestys ei onnistu
 ---
-- **Nimi:** Katso äänestystilanne
-- **Käyttäjät:**
-- **Laukaisija:**
-- **Esiehto:**
-- **Käyttötapauksen kulku:**
-- **Jälkiehto:**
-- **Poikkeukset:**
+### Katso äänestystilanne
+- *Käyttäjät:* Käyttäjä
+- *Laukaisija:* Käyttäjä haluaa nähdä äänestystilanteen
+- *Esiehto:* Käyttäjä on valinnut äänestyksen
+- *Käyttötapauksen kulku:*
+    1. Järjestelmä näyttää äänestystilanteen
+- *Jälkiehto:* Käyttäjä näkee äänestystilanteen
+- *Poikkeuksellinen toiminta:*
+    1. Äänestyksellä ei ole ääniä
 ---
-- **Nimi:** Tee äänestyksiä
-- **Käyttäjät:**
-- **Laukaisija:**
-- **Esiehto:**
-- **Käyttötapauksen kulku:**
-- **Jälkiehto:**
-- **Poikkeukset:**
+### Tee äänestyksiä
+- *Käyttäjät:* Ylläpitäjä
+- *Laukaisija:* Ylläpitäjä haluaa tehdä äänestyksen
+- *Esiehto:* 
+- *Käyttötapauksen kulku:*
+- *Jälkiehto:*
+- *Poikkeuksellinen toiminta:*
 ---
-- **Nimi:** Poista äänestyksiä
-- **Käyttäjät:**
-- **Laukaisija:**
-- **Esiehto:**
-- **Käyttötapauksen kulku:**
-- **Jälkiehto:**
-- **Poikkeukset:**
+### Poista äänestyksiä
+- *Käyttäjät:* Ylläpitäjä
+- *Laukaisija:* Ylläpitäjä haluaa poistaa äänestyksen
+- *Esiehto:*
+- *Käyttötapauksen kulku:*
+- *Jälkiehto:*
+- *Poikkeuksellinen toiminta:*
