@@ -32,11 +32,16 @@ body {
 
 /* ADD VOTING */
 #add-voting-btn {
+    font-size: 15px;
+    padding: 7px 14px;
+    margin: 10px;
+    background-image: linear-gradient(var(--dark-color), var(--light-color), var(--dark-color));
+    border: 1px solid var(--dark-color);
     cursor: pointer;
 }
 
 #add-voting {
-    display: visible;
+    display: none;
     margin: 0 auto;
     width: 90%;
     text-align: left;
@@ -55,11 +60,10 @@ body {
     width: 500px;
 }
 
-#add-voting-option-btn {
+#add-voting-option-btn, #voting-ready-btn {
     margin: 0;
-    padding: 0;
-    border-color: var(--medium-color);
-    border-style: none;
+    padding: 5px 10px;
+    border: 2px solid var(--medium-color);
     cursor: pointer;
 }
 
@@ -80,7 +84,7 @@ body {
     padding: 0;
     height: 20px;
     width: 20px;
-    background-image: url(../icons/minus-square-regular.svg);
+    background-image: url(../icons/trash-alt-regular.svg);
     background-repeat: no-repeat;
     background-color: var(--medium-color);
     border-color: var(--medium-color);
