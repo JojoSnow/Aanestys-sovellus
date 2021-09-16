@@ -33,15 +33,16 @@ body {
 /* ADD VOTING */
 #add-voting-btn {
     font-size: 15px;
-    padding: 7px 14px;
-    margin: 10px;
+    font-weight: bold;
+    padding: 7px;
+    margin: 10px auto;
+    width: 150px;
     background-image: linear-gradient(var(--dark-color), var(--light-color), var(--dark-color));
     border: 1px solid var(--dark-color);
     cursor: pointer;
 }
 
 #add-voting {
-    display: none;
     margin: 0 auto;
     width: 90%;
     text-align: left;
@@ -79,20 +80,6 @@ body {
     background-color: var(--medium-color);
 }
 
-.delete-option-btn {
-    margin: 0;
-    padding: 0;
-    height: 20px;
-    width: 20px;
-    background-image: url(../icons/trash-alt-regular.svg);
-    background-repeat: no-repeat;
-    background-color: var(--medium-color);
-    border-color: var(--medium-color);
-    border-style: none;
-    float: right;
-    cursor: pointer;
-}
-
 #voting-ready-btn {
     float: right;
     cursor: pointer;
@@ -112,5 +99,19 @@ body {
     width: 80%;
     background-image: linear-gradient(to bottom right, var(--dark-color), var(--light-color));
     border: 1px solid var(--light-color);
+    cursor: pointer;
+}
+
+.delete-btn {
+    margin: 0;
+    padding: 0;
+    height: 20px;
+    width: 20px;
+    background-image: url(../icons/trash-alt-regular.svg);
+    background-repeat: no-repeat;
+    background-color: var(--medium-color);
+    border-color: var(--medium-color);
+    border-style: none;
+    float: right;
     cursor: pointer;
 }
