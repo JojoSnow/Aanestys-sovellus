@@ -1,14 +1,12 @@
 const addVotingBtn = document.getElementById('add-voting-btn');
 
-
 window.addEventListener('load', hideOnLoad);
 document.addEventListener('keydown', adminModeKey);
 addVotingBtn.addEventListener('click', makeForm);
 
-
-let adminMode = false;
+let adminMode = false; // activate adminMode with ctrl key
 let votingOptArray = [];
-let votingArray = [];
+const votingArray = [];
 
 function hideOnLoad() {
     document.getElementById('add-voting').style.display = 'none';
@@ -16,19 +14,98 @@ function hideOnLoad() {
     document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'none');
 }
 
-function showVoting(event) {
-    const targetID = event.target.getAttribute('id');
-    const voting = document.getElementById(targetID);
+let voteIdIndex = 0;
+function addVotingContents(event) {
+    const targetId = event.target.parentElement.getAttribute('id');
+    const expandBtn = event.target;
+
+    for (let x = 0; votingArray.length > x; x++) {
+        if (votingArray[x].show === false && votingArray[x].id === targetId) {
+            expandBtn.style.backgroundImage = 'url(../icons/minus-square-regular.svg)';
     
+            for (let i = 0; votingArray.length > i; i++) {
+                if (votingArray[i].id === targetId) {
+                    const voting = document.getElementById('voting' + i);
+    
+                    const newDiv = document.createElement('div');
+                    const newUl = document.createElement('ul');
+                    const newP = document.createElement('p');
+                    const node = document.createTextNode('Äänestä klikkaamalla!');
+
+                    newDiv.id = 'expand-div';
+                    voting.appendChild(newDiv);
+                    newUl.id = 'vote-list';
+                    newDiv.appendChild(newUl);
+                    newP.id = 'vote-info';
+                    newP.appendChild(node);
+                    newDiv.appendChild(newP);
+    
+                    for (let y = 0; votingArray[i].options.length > y; y++) {
+                        const newLi = document.createElement('li');
+                        const newP = document.createElement('p');
+                        const option = document.createTextNode(votingArray[i].options[y].option);
+                        const votes = document.createTextNode(votingArray[i].options[y].votes);
+
+                        newLi.className = 'vote-item'
+                        newLi.id = 'vote' + voteIdIndex;
+                        newLi.appendChild(option);
+                        newP.className = 'votes'
+                        newP.id = 'votes' + voteIdIndex;
+                        newP.appendChild(votes);
+                        newLi.appendChild(newP);
+                        newUl.appendChild(newLi);
+                        voteIdIndex++;
+                    }
+                    votingArray[i].show = true;
+                }
+            }
+        } else if (votingArray[x].show === true && votingArray[x].id === targetId) {
+            document.getElementById('expand-div').remove();
+            expandBtn.style.backgroundImage = 'url(../icons/plus-square-regular.svg)';
+
+            for (let i = 0; votingArray.length > i; i++) {
+                if (votingArray[i].id === targetId) {
+                    votingArray[i].show = false;
+                }
+            }
+        }
+    }
+    const voteOption = document.querySelectorAll('.vote-item');
+    // const voteCount = document.querySelectorAll('.votes');
+
+    // voteCount.forEach(vote => vote.addEventListener('click', addVote));
+    voteOption.forEach(option => option.addEventListener('click', addVote));
 
 }
 
+function addVote(event) {
+    const targetId = event.target.getAttribute('id');
+    const parentId = event.target.parentElement.getAttribute('id');
+
+    console.log(targetId + parentId);
+
+    for (let x = 0; votingArray.length > x; x++) {
+        for (let i = 0; votingArray[x].options.length > i; i++) {
+            switch (votingArray[x].options[i].id) {
+                case parentId:
+                    votingArray[x].options[i].votes++;
+                    break;
+                case targetId:
+                    votingArray[x].options[i].votes++;
+                    break;
+            }
+            
+        }
+    }
+    console.log(votingArray);
+}
+
 function deleteVoting(event) {
-    const targetID = event.target.parentElement.getAttribute('id');
-    const voting = document.getElementById(targetID);
+    const targetId = event.target.parentElement.getAttribute('id');
+    const voting = document.getElementById(targetId);
     voting.remove();
     for (let i = 0; votingArray.length > i; i++) {
-        if (votingArray[i].id === targetID) {
+        if (votingArray[i].id === targetId) {
             votingArray.splice(i, 1);
         }
     }
@@ -74,7 +151,7 @@ function makeForm() {
     votingForm.appendChild(optionsInput);
 
     const votingOptSubmit = document.createElement('input');
-    votingOptSubmit.type = 'submit';
+    votingOptSubmit.type = 'button';
     votingOptSubmit.value = 'Lisää';
     votingOptSubmit.id = 'add-voting-option-btn';
     votingForm.appendChild(votingOptSubmit);
@@ -96,18 +173,20 @@ function makeForm() {
     votingReadyBtn.addEventListener('click', addVoting);
 }
 
-function addVotingOption(event) {
-    event.preventDefault();
+let voteIndex = 0;
+function addVotingOption() {
     const votingOpt = document.getElementById('voting-options').value;
-
-    if(votingOpt !== '') {
+    if (votingOpt !== '') {
         const node = document.createTextNode(votingOpt);
         const newLi = document.createElement('li');
 
-        votingOptArray.push(votingOpt);
+        const newObject = {id: 'vote' + voteIndex, option: votingOpt, votes: 0};
+        votingOptArray.push(newObject);
         newLi.appendChild(node);
+        newLi.id = 'vote' + voteIndex;
         newLi.className = 'voting-options-list-item';
         document.getElementById('voting-options-list').appendChild(newLi);
+        voteIndex++;
     }
 }
 
@@ -119,40 +198,49 @@ function addVoting(event) {
     const votingName = document.getElementById('voting-name').value;
     const nameNode = document.createTextNode(votingName);
     const newDiv = document.createElement('div');
-    const newBtn = document.createElement('button');
+    const delBtn = document.createElement('button');
+    const moreBtn = document.createElement('button');
 
-    newDiv.appendChild(nameNode);
-    newDiv.id = 'voting' + IDindex;
-    newDiv.className = 'voting-item';
-    votingList.appendChild(newDiv);
-    newBtn.id = 'delete' + IDindex;
-    newBtn.className = 'delete-btn';
-    newDiv.appendChild(newBtn);
+    if (votingName !== '') {
+        newDiv.appendChild(nameNode);
+        newDiv.id = 'voting' + IDindex;
+        newDiv.className = 'voting-item';
+        votingList.appendChild(newDiv);
+        moreBtn.id = 'expand' + IDindex;
+        moreBtn.className = 'more-btn';
+        newDiv.appendChild(moreBtn);
+        delBtn.id = 'delete' + IDindex;
+        delBtn.className = 'delete-btn';
+        newDiv.appendChild(delBtn);
 
-    document.querySelectorAll('.voting-options-list-item').forEach(item => item.remove());
+        document.querySelectorAll('.voting-options-list-item').forEach(item => item.remove());
 
-    const newObject = {id: 'voting' + IDindex, options: votingOptArray};
-    votingArray.push(newObject);
+        document.getElementById('add-voting-form').remove();
 
-    votingOptArray = [];
+        const newObject = {id: 'voting' + IDindex, options: votingOptArray, show: false};
+        votingArray.push(newObject);
 
-    IDindex++;
+        votingOptArray = [];
 
-    const deleteBtn = document.querySelectorAll('.delete-btn');
-    const voting = document.querySelectorAll('.voting-item');
+        IDindex++;
 
-    deleteBtn.forEach(btn => btn.addEventListener('click', deleteVoting));
-    voting.forEach(vote => vote.addEventListener(('click'), showVoting));
+        const deleteBtn = document.querySelectorAll('.delete-btn');
+        const expandBtn = document.querySelectorAll('.more-btn');
+
+        deleteBtn.forEach(btn => btn.addEventListener('click', deleteVoting));
+        expandBtn.forEach(voting => voting.addEventListener('click', addVotingContents));
+    }
 }
 
 function adminModeKey(event) {    
-    if (event.key === 'p' && adminMode === false) {
+    if (event.ctrlKey === true && adminMode === false) {
         adminMode = true;
         if (adminMode === true) {
             document.getElementById('add-voting').style.display = 'block';
             addVotingBtn.style.display = 'block';
+            document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'block');
         }
-    } else if (event.key === 'p' && adminMode === true) {
+    } else if (event.ctrlKey === true && adminMode === true) {
         adminMode = false;
         if (adminMode === false) {
             document.getElementById('add-voting').style.display = 'none';
