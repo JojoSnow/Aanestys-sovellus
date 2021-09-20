@@ -1,12 +1,12 @@
 const addVotingBtn = document.getElementById('add-voting-btn');
 
 
-// window.addEventListener('load', hideOnLoad);
+window.addEventListener('load', hideOnLoad);
 document.addEventListener('keydown', adminModeKey);
 addVotingBtn.addEventListener('click', makeForm);
 
 
-let adminMode = true;
+let adminMode = false;
 let votingOptArray = [];
 let votingArray = [];
 
@@ -109,7 +109,6 @@ function addVotingOption(event) {
         newLi.className = 'voting-options-list-item';
         document.getElementById('voting-options-list').appendChild(newLi);
     }
-    
 }
 
 let IDindex = 0;
@@ -150,7 +149,8 @@ function adminModeKey(event) {
     if (event.key === 'p' && adminMode === false) {
         adminMode = true;
         if (adminMode === true) {
-            makeForm();
+            document.getElementById('add-voting').style.display = 'block';
+            addVotingBtn.style.display = 'block';
         }
     } else if (event.key === 'p' && adminMode === true) {
         adminMode = false;
