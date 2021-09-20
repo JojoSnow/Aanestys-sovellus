@@ -3,10 +3,10 @@ const addVotingBtn = document.getElementById('add-voting-btn');
 
 // window.addEventListener('load', hideOnLoad);
 document.addEventListener('keydown', adminModeKey);
-addVotingBtn.addEventListener('click', addVotingVisible);
+addVotingBtn.addEventListener('click', makeForm);
 
 
-let adminMode = false;
+let adminMode = true;
 let votingOptArray = [];
 let votingArray = [];
 
@@ -80,7 +80,7 @@ function makeForm() {
     votingForm.appendChild(votingOptSubmit);
 
     const optionsList = document.createElement('ol');
-    optionsList.id = 'add-voting-option-btn';
+    optionsList.id = 'voting-options-list';
     votingForm.appendChild(optionsList);
 
     const readyBtn = document.createElement('input');
