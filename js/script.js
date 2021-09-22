@@ -14,7 +14,7 @@ function hideOnLoad() {
     document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'none');
 }
 
-let voteIdIndex = 0;
+let emailIndex = 0;
 function addVotingContents(event) {
     const targetId = event.target.parentElement.getAttribute('id');
     const expandBtn = event.target;
@@ -27,38 +27,57 @@ function addVotingContents(event) {
                     const voting = document.getElementById(targetId);
     
                     const newDiv = document.createElement('div');
-                    const newUl = document.createElement('ul');
-                    const newP = document.createElement('p');
-                    const node = document.createTextNode('Äänestä klikkaamalla!');
-
                     newDiv.id = 'expand-div' + i;
                     newDiv.className = 'expand-div';
-                    voting.appendChild(newDiv);
-                    newUl.id = 'vote-list';
-                    newDiv.appendChild(newUl);
-                    newP.id = 'vote-info';
-                    newP.className = 'vote-info';
-                    newP.appendChild(node);
-                    newDiv.appendChild(newP);
+                    voting.appendChild(newDiv);                    
     
                     for (let y = 0; votingArray[i].options.length > y; y++) {
-                        const newLi = document.createElement('li');
-                        const newP = document.createElement('p');
-                        const option = document.createTextNode(votingArray[i].options[y].option);
-                        const votes = document.createTextNode(votingArray[i].options[y].votes);
 
-                        newLi.className = 'vote-item';
-                        newLi.id = votingArray[i].options[y].id;
-                        newLi.appendChild(option);
-                        newP.className = 'votes';
-                        newP.id = 'votes' + voteIdIndex;
-                        newP.appendChild(votes);
-                        newLi.appendChild(newP);
-                        newUl.appendChild(newLi);
-                        voteIdIndex++;
+                        const radioInput = document.createElement('input');
+                        radioInput.className = 'vote-item';
+                        radioInput.type = 'radio';
+                        radioInput.name = 'vote-option';
+                        radioInput.value = 'vote-option-' + y;
+                        radioInput.id = votingArray[x].options[y].id;
+                        newDiv.appendChild(radioInput);
+
+                        const radioLabel = document.createElement('label');
+                        radioLabel.htmlFor = 'vote-option-' + y;
+                        radioLabel.innerHTML = votingArray[i].options[y].option + ' ' + votingArray[i].options[y].votes;
+                        newDiv.appendChild(radioLabel);
+
+                        const newBr1 = document.createElement('br');
+                        newDiv.appendChild(newBr1);
+
                     }
+    
+                    const emailLabel = document.createElement('label');
+                    emailLabel.className = 'email-labels';
+                    emailLabel.htmlFor = 'email';
+                    emailLabel.innerHTML = 'Sähköposti:';
+                    newDiv.appendChild(emailLabel);
+
+                    const newBr1 = document.createElement('br');
+                    newDiv.appendChild(newBr1);
+
+                    const emailInput = document.createElement('input');
+                    emailInput.type = 'email';
+                    emailInput.name = 'email';
+                    emailInput.className = 'email-inputs';
+                    newDiv.appendChild(emailInput);
+
+                    const newBr2 = document.createElement('br');
+                    newDiv.appendChild(newBr2);
+
+                    const emailBtn = document.createElement('input');
+                    emailBtn.type = 'button';
+                    emailBtn.value = 'Äänestä';
+                    emailBtn.className = 'email-btns'
+                    emailBtn.id = 'email-btn-' + emailIndex;
+                    newDiv.appendChild(emailBtn);
+                    
                     votingArray[i].show = true;
-                    votingArray[i].showed = 'hide';
+                    votingArray[i].showed = 'hide';                    
                 }
             }
         } else if (votingArray[x].show === false && votingArray[x].id === targetId && votingArray[x].showed === 'expand') {
@@ -73,30 +92,24 @@ function addVotingContents(event) {
             votingArray[x].show = false;
         }
     }
-    const voteOption = document.querySelectorAll('.vote-item');
-
-    voteOption.forEach(option => option.addEventListener('click', addVote));
+    document.querySelectorAll('.email-btns').forEach(btn => btn.addEventListener('mouseup', addVote));
 }
 
 function addVote(event) {
-    const targetId = event.target.getAttribute('id');
-    const parentId = event.target.parentElement.getAttribute('id');
-
     for (let x = 0; votingArray.length > x; x++) {
         for (let i = 0; votingArray[x].options.length > i; i++) {
-            if (votingArray[x].options[i].id === parentId) {
-                votingArray[x].options[i].votes++;
-                if (parentId === votingArray[x].options[i].id) {
-                    document.getElementById(targetId).innerHTML = votingArray[x].options[i].votes;
-                } 
-            } else if (targetId === votingArray[x].options[i].id) {
-                votingArray[x].options[i].votes++;
-                if (targetId === votingArray[x].options[i].id) {
-                    document.getElementById(targetId).firstElementChild.innerHTML = votingArray[x].options[i].votes;
+            if (document.getElementById(votingArray[x].options[i].id).checked) {
+                if (!event.target.previousElementSibling.previousElementSibling.checkValidity()) {
+                    votingArray[x].options[i].votes++;
+                    document.getElementById(votingArray[x].options[i].id).nextSibling.innerHTML = votingArray[x].options[i].option + ' ' + votingArray[x].options[i].votes;
+                    event.target.previousElementSibling.previousElementSibling.style.borderColor = '#c88deb';
+                } else {
+                    event.target.previousElementSibling.previousElementSibling.style.borderColor = 'red';
                 }
             }
         }
     }
+        
 }
 
 function deleteVoting(event) {
@@ -177,14 +190,14 @@ function addVotingOption() {
     const votingOpt = document.getElementById('voting-options').value;
     if (votingOpt !== '') {
         const node = document.createTextNode(votingOpt);
-        const newLi = document.createElement('li');
+        const radioInput = document.createElement('li');
 
-        const newObject = {id: 'vote' + voteIndex, option: votingOpt, votes: 0};
+        const newObject = {id: 'vote' + voteIndex, option: votingOpt, votes: 0, email: false};
         votingOptArray.push(newObject);
-        newLi.appendChild(node);
-        newLi.id = 'vote' + voteIndex;
-        newLi.className = 'voting-options-list-item';
-        document.getElementById('voting-options-list').appendChild(newLi);
+        radioInput.appendChild(node);
+        radioInput.id = 'vote' + voteIndex;
+        radioInput.className = 'voting-options-list-item';
+        document.getElementById('voting-options-list').appendChild(radioInput);
         voteIndex++;
     }
 }

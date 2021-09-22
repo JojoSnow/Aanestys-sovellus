@@ -140,20 +140,26 @@ body {
 }
 
 .vote-item {
-    text-align: center;
-    width: 70%;
-    margin: 10px auto;
-    padding: 5px;
-    border: 1.5px solid var(--light-color);
-    background-color: rgba(111, 14, 156, 0.068);
+    margin: 10px;
+}
+
+.email-labels {
+    font-size: 14px;
+    margin: 0;
+}
+
+.email-inputs {
+    padding: 2px;
+    width: 300px;
+    border-color: var(--medium-color);
+}
+
+.email-btns {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 5px 8px;
+    background-image: linear-gradient(var(--dark-color), var(--light-color), var(--dark-color));
+    border: 1px solid var(--dark-color);
     cursor: pointer;
-}
-
-.votes {
-    margin: 5px;
-}
-
-.vote-info {
-    margin: 20px auto;
-    text-align: center;
 }
