@@ -18,25 +18,26 @@ let voteIdIndex = 0;
 function addVotingContents(event) {
     const targetId = event.target.parentElement.getAttribute('id');
     const expandBtn = event.target;
-
     for (let x = 0; votingArray.length > x; x++) {
-        if (votingArray[x].show === false && votingArray[x].id === targetId) {
+        if (votingArray[x].show === false && votingArray[x].id === targetId && votingArray[x].showed === 'create') {
             expandBtn.style.backgroundImage = 'url(../icons/minus-square-regular.svg)';
     
             for (let i = 0; votingArray.length > i; i++) {
-                if (votingArray[i].id === targetId) {
-                    const voting = document.getElementById('voting' + i);
+                if (votingArray[i].id === targetId && votingArray[i].showed === 'create') {
+                    const voting = document.getElementById(targetId);
     
                     const newDiv = document.createElement('div');
                     const newUl = document.createElement('ul');
                     const newP = document.createElement('p');
                     const node = document.createTextNode('Äänestä klikkaamalla!');
 
-                    newDiv.id = 'expand-div';
+                    newDiv.id = 'expand-div' + i;
+                    newDiv.className = 'expand-div';
                     voting.appendChild(newDiv);
                     newUl.id = 'vote-list';
                     newDiv.appendChild(newUl);
                     newP.id = 'vote-info';
+                    newP.className = 'vote-info';
                     newP.appendChild(node);
                     newDiv.appendChild(newP);
     
@@ -46,10 +47,10 @@ function addVotingContents(event) {
                         const option = document.createTextNode(votingArray[i].options[y].option);
                         const votes = document.createTextNode(votingArray[i].options[y].votes);
 
-                        newLi.className = 'vote-item'
-                        newLi.id = 'vote' + voteIdIndex;
+                        newLi.className = 'vote-item';
+                        newLi.id = votingArray[i].options[y].id;
                         newLi.appendChild(option);
-                        newP.className = 'votes'
+                        newP.className = 'votes';
                         newP.id = 'votes' + voteIdIndex;
                         newP.appendChild(votes);
                         newLi.appendChild(newP);
@@ -57,47 +58,45 @@ function addVotingContents(event) {
                         voteIdIndex++;
                     }
                     votingArray[i].show = true;
+                    votingArray[i].showed = 'hide';
                 }
             }
-        } else if (votingArray[x].show === true && votingArray[x].id === targetId) {
-            document.getElementById('expand-div').remove();
+        } else if (votingArray[x].show === false && votingArray[x].id === targetId && votingArray[x].showed === 'expand') {
+            event.target.nextSibling.nextSibling.style.display = 'block';
+            expandBtn.style.backgroundImage = 'url(../icons/minus-square-regular.svg)';
+            votingArray[x].showed = 'hide';
+            votingArray[x].show = true;
+        } else if (votingArray[x].show === true && votingArray[x].id === targetId && votingArray[x].showed === 'hide') {
+            event.target.nextSibling.nextSibling.style.display = 'none';
             expandBtn.style.backgroundImage = 'url(../icons/plus-square-regular.svg)';
-
-            for (let i = 0; votingArray.length > i; i++) {
-                if (votingArray[i].id === targetId) {
-                    votingArray[i].show = false;
-                }
-            }
+            votingArray[x].showed = 'expand';
+            votingArray[x].show = false;
         }
     }
     const voteOption = document.querySelectorAll('.vote-item');
-    // const voteCount = document.querySelectorAll('.votes');
 
-    // voteCount.forEach(vote => vote.addEventListener('click', addVote));
     voteOption.forEach(option => option.addEventListener('click', addVote));
-
 }
 
 function addVote(event) {
     const targetId = event.target.getAttribute('id');
     const parentId = event.target.parentElement.getAttribute('id');
 
-    console.log(targetId + parentId);
-
     for (let x = 0; votingArray.length > x; x++) {
         for (let i = 0; votingArray[x].options.length > i; i++) {
-            switch (votingArray[x].options[i].id) {
-                case parentId:
-                    votingArray[x].options[i].votes++;
-                    break;
-                case targetId:
-                    votingArray[x].options[i].votes++;
-                    break;
+            if (votingArray[x].options[i].id === parentId) {
+                votingArray[x].options[i].votes++;
+                if (parentId === votingArray[x].options[i].id) {
+                    document.getElementById(targetId).innerHTML = votingArray[x].options[i].votes;
+                } 
+            } else if (targetId === votingArray[x].options[i].id) {
+                votingArray[x].options[i].votes++;
+                if (targetId === votingArray[x].options[i].id) {
+                    document.getElementById(targetId).firstElementChild.innerHTML = votingArray[x].options[i].votes;
+                }
             }
-            
         }
     }
-    console.log(votingArray);
 }
 
 function deleteVoting(event) {
@@ -217,7 +216,7 @@ function addVoting(event) {
 
         document.getElementById('add-voting-form').remove();
 
-        const newObject = {id: 'voting' + IDindex, options: votingOptArray, show: false};
+        const newObject = {id: 'voting' + IDindex, options: votingOptArray, show: false, showed: 'create'};
         votingArray.push(newObject);
 
         votingOptArray = [];

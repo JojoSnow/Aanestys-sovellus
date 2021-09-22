@@ -126,7 +126,7 @@ body {
     cursor: pointer;
 }
 
-#expand-div {
+.expand-div {
     margin: 10px auto;
     padding: 10px;
     background-image: linear-gradient(to bottom, var(--medium-color), var(--light-bg));
@@ -151,4 +151,9 @@ body {
 
 .votes {
     margin: 5px;
+}
+
+.vote-info {
+    margin: 20px auto;
+    text-align: center;
 }
